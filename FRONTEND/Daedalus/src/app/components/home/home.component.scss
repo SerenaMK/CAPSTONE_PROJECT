@@ -1,0 +1,26 @@
+.banner {
+    background-image: url("https://images.pexels.com/photos/4108723/pexels-photo-4108723.jpeg");
+    background-position-y: 35%;
+    background-size: cover;
+    position: relative;
+}
+// .banner::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background: url("https://i.ibb.co/prV31zK/overlay-pattern.png") black;
+//     opacity: 0.3;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// .test {
+//     box-shadow: 0 0 5px 10px rgb(255, 255, 255);
+// }
+
+.div-image {
+    background-image: url("https://media.istockphoto.com/id/140217119/it/foto/mio-flatmate-non-ha-svolto-i-lavori-domestici-di-nuovo.jpg?s=1024x1024&w=is&k=20&c=vUL758oWD0IfP9q5W2hSjAZIpgcK7gvgv8EfY5hupqY=");
+    background-size: cover;
+    box-shadow: 0 0 15px 20px white inset;
+}

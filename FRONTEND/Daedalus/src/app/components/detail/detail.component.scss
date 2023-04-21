@@ -1,0 +1,14 @@
+// IMAGE
+.product-image {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.product-image img {
+    height: fit-content;
+    min-height: 100%;
+    width: -webkit-fill-available;
+    // width: fit-content;
+    // min-width: fit-content;
+}

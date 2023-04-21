@@ -1,0 +1,52 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row mt-2">
+        <div class="col-12 ms-5">
+            <p class="display-5">Register</p>
+
+            <div class="d-flex justify-content-around p-4">
+
+
+                <!-- FORM -->
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="d-flex flex-column align-items-start mb-4">
+                        <!-- First name -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>First name</mat-label>
+                            <input matInput type="text" name="firstname" formControlName="firstname">
+                        </mat-form-field>
+
+                        <!-- Last name -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Last name</mat-label>
+                            <input matInput type="text" name="lastname" formControlName="lastname">
+                        </mat-form-field>
+
+                        <!-- Username -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput type="text" name="username" formControlName="username">
+                        </mat-form-field>
+
+                        <!-- Email -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="text" name="email" formControlName="email">
+                        </mat-form-field>
+
+                        <!-- Password -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" name="password" formControlName="password">
+                        </mat-form-field>
+
+                        <!-- Submit -->
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="!registerForm.valid">Add</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

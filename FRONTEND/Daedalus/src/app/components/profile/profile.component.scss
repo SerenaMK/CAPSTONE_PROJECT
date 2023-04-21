@@ -1,0 +1,28 @@
+.box-left {
+    background-color: #F5F5F5;
+}
+
+// .box-right {
+//     padding-left: 4;
+// }
+
+.view-all {
+    text-decoration: none;
+    color: #FF4081;
+
+    &:hover {
+        color: #FFD333;
+    }
+}
+
+.manage-list {
+    line-height: 2;
+
+    // li {
+    //     &::before {
+    //         content: "- ";
+    //         font-family: 'Glyphicons Halflings';
+    //     }
+    // }
+
+}

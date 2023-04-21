@@ -1,0 +1,65 @@
+<div class="container p-2">
+    <mat-card class="example-card m-0">
+        <div class="row d-flex justify-content-between">
+
+            <!-- PRODUCT INFO -->
+            <div class="col-lg-6 col-12 d-flex">
+                <mat-card-title-group routerLink="/detail/{{ product.id }}">
+                    <!-- ID -->
+                    <div class="mb-2 d-none d-sm-flex d-flex me-3">
+                        <button mat-stroked-button color="primary">
+                            # {{ product.id }}
+                        </button>
+                    </div>
+
+                    <!-- IMAGE -->
+                    <div>
+                        <img class="m-0" mat-card-sm-image src="{{product.image}}" alt="Product image">
+                    </div>
+
+                    <!-- TITLE + BRAND + AVAILABILITY -->
+                    <div class="ms-4 align-self-center">
+                        <mat-card-title id="prod-title">{{ product.title }}</mat-card-title>
+                        <mat-card-subtitle>
+                            {{ product.brand }} -
+                            <span [ngStyle]="{'color': product.available==true ? 'green' : 'darkred'}">
+                                <i *ngIf="product.available==true"> Available</i>
+                                <i *ngIf="product.available==false"> Not available</i>
+                            </span>
+                        </mat-card-subtitle>
+                    </div>
+                </mat-card-title-group>
+            </div>
+
+            <div class="col-lg-6 col-12 d-flex justify-content-end">
+
+                <!-- PRICE -->
+                <div class="d-flex justify-content-center pe-5">
+                    <mat-card-content class="m-0 py-3">
+                        <p class="fs-3">{{ product.price | currency: "EUR" }}</p>
+                    </mat-card-content>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="d-flex justify-content-center">
+                    <mat-card-actions class="d-flex">
+                        <div class="buttons d-flex text-center">
+                            <div>
+                                <button mat-raised-button color="primary" routerLink="/edit-product/{{ product.id }}">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                            <div class="mx-2">
+                                <button mat-raised-button color="warn" (click)="openDialog()">
+                                    <mat-icon>delete_forever</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-actions>
+                </div>
+
+            </div>
+
+        </div>
+    </mat-card>
+</div>

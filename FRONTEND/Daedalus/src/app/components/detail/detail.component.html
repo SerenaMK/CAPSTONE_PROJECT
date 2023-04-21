@@ -1,0 +1,70 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <p class="display-6 ps-2">Product page</p>
+
+            <div class="container px-4">
+                <!-- ROW 1 -->
+                <div class="row">
+                    <!-- COL 1 -->
+                    <div class="col-4 bg-body-secondary p-3">
+                        <div class="product-image">
+                            <img src="{{ product.image }}" alt="Product image">
+                        </div>
+                    </div>
+                    <!-- COL 2 -->
+                    <div class="col-8 bg-body-tertiary py-3 px-5">
+                        <div class="mb-5">
+                            <h1 class="fs-2 fw-bold mb-2">{{ product.title }}</h1>
+                            <p class="fs-6 fst-italic mb-2 fw-bold">{{ product.type }}</p>
+                            <ul class="d-flex mb-4 list-unstyled">
+                                <li class="pe-2">Categories:</li>
+                                <li class="pe-2 fst-italic" *ngFor="let category of categories">{{ category.name }}</li>
+                            </ul>
+
+                            <p class="fs-5">Brand: <b>{{ product.brand }}</b></p>
+                        </div>
+
+                        <p class="fs-5 mb-3" [ngStyle]="{'color': product.available==true ? 'green' : 'darkred'}">
+                            <span *ngIf="product.available==true">Available</span>
+                            <span *ngIf="product.available==false">Not available</span>
+                        </p>
+
+                        <p class="fs-2">{{ product.price | currency: "EUR" }}</p>
+
+                        <div class="d-flex text-center mt-4">
+                            <div class="text-center">
+                                <button mat-raised-button color="primary" (click)="addToCart()"
+                                    *ngIf="product.available">
+                                    <i class="bi bi-cart-plus-fill fs-5"></i>
+                                    ADD TO CART
+                                </button>
+                                <button mat-raised-button color="primary" (click)="addToCart()"
+                                    *ngIf="!product.available" disabled>
+                                    <i class="bi bi-cart-plus-fill fs-5"></i>
+                                    ADD TO CART
+                                </button>
+                            </div>
+
+                            <div class="text-center ms-2">
+                                <button mat-raised-button color="accent"
+                                    (click)="!product.isFave ? addToFaves() : removeFromFaves()">
+                                    <mat-icon *ngIf="!product.isFave">favorite_border</mat-icon>
+                                    <mat-icon *ngIf="product.isFave">favorite</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="row mt-3">
+                    <div class="col-12 bg-body-tertiary p-4">
+                        <p class="fw-bold fs-5 mb-4">Product description</p>
+                        <p class="px-3">{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

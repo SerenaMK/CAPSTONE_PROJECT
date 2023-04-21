@@ -1,0 +1,18 @@
+.selection {
+    color: #429e73;
+    font-weight: 500;
+
+    &:hover {
+        color: #75e6b2;
+    }
+}
+
+.user-name, .label {
+    text-transform: uppercase;
+}
+.user-name {
+    font-weight: bold;
+}
+.label {
+    font-size: 1.1em;
+}

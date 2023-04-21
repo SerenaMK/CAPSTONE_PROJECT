@@ -1,0 +1,37 @@
+<div class="container p-2">
+    <mat-card class="example-card m-0">
+        <div class="row d-flex justify-content-between">
+
+            <div class="col-lg-6 col-12 d-flex">
+                <mat-card-title-group class="d-flex flex-wrap">
+
+                    <div class="mb-2 d-flex me-3" routerLink="/order/{{ order.id }}">
+                        <button mat-stroked-button color="primary">
+                            Order # {{ order.id }}
+                            <!-- <span class="d-none d-sm-inline">Order</span> # {{ order.id }} -->
+                        </button>
+                    </div>
+
+                    <br>
+
+                    <div class="d-flex">
+                        <div class="position-relative" *ngFor="let product of order.products | slice:0:10; let i = index">
+                            <img class="m-0 ms-2" mat-card-sm-image src="{{ order.products[i].image }}" alt="Product image" routerLink="/detail/{{ order.products[i].id }}">
+                            <div class="quantity position-absolute z-1 d-flex justify-content-center align-items-center text-light" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                                {{ order.products[i].quantity }}
+                            </div>
+                        </div>
+                    </div>
+
+                </mat-card-title-group>
+            </div>
+
+            <div class="col-lg-6 col-12 d-flex justify-content-end">
+                <mat-card-content class="mx-3 mb-0 mt-3">
+                    <p class="fs-3 ms-4">{{ total | currency: "EUR" }}</p>
+                </mat-card-content>
+            </div>
+
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row">
+        <!-- TITLE -->
+        <div class="col-12 text-center">
+            <p class="h1">Step 1: what</p>
+            <p class="h4">Let's identify the problem</p>
+            <hr>
+        </div>
+
+        <!-- FILTERS (RESPONSIVE) -->
+        <div class="col-12 text-center">
+
+            <!-- <ng-container [ngSwitch]="stepperOrientation | async">
+                <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
+                <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
+            </ng-container> -->
+
+            <mat-stepper class="stepper" linear [orientation]="(stepperOrientation | async)!" #stepper>
+
+                <!-- STEP 1 -->
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+
+                        <div class="d-flex justify-content-center">
+                            <ng-template matStepLabel>Your problem has to do with...</ng-template>
+                            <mat-radio-group [(ngModel)]="chosenOption" formControlName="firstCtrl" class="radio-group">
+
+                                <mat-radio-button class="radio-button" *ngFor="let option of options" [value]="option">
+                                    {{ option }}
+                                </mat-radio-button>
+
+                            </mat-radio-group>
+                        </div>
+
+                        <div>
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <button mat-button matStepperNext [disabled]="!firstFormGroup.valid" (click)="filterStep1()">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <!-- STEP 2 -->
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+
+                        <div class="d-flex justify-content-center" *ngIf="chosenOption=='Washing'">
+                            <ng-template matStepLabel>What is the problem</ng-template>
+                            <mat-radio-group [(ngModel)]="chosenOption3" formControlName="secondCtrl" class="radio-group">
+
+                                <mat-radio-button class="radio-button" *ngFor="let option of options3" [value]="option">
+                                    {{ option }}
+                                </mat-radio-button>
+
+                            </mat-radio-group>
+                        </div>
+
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext (click)="filterStep2()">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <!-- STEP 3 -->
+                <mat-step [stepControl]="thirdFormGroup">
+                    <form [formGroup]="thirdFormGroup">
+
+                        <div class="d-flex flex-column align-items-center" *ngIf="chosenOption3=='Washing dishes'">
+                            <ng-template matStepLabel>Why does the problem persist</ng-template>
+                            <p>If you can't wash the dishes regularly, the best solution for you would be owning a <b>dishwasher</b>.<br>Assuming you don't have one yet, why is that?</p>
+
+                            <mat-radio-group [(ngModel)]="chosenOption3_1" formControlName="thirdCtrl" class="radio-group">
+
+                                <mat-radio-button class="radio-button" *ngFor="let option of options3_1" [value]="option">
+                                    {{ option }}
+                                </mat-radio-button>
+
+                            </mat-radio-group>
+                        </div>
+
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext (click)="filterStep3()">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <!-- STEP 4 -->
+                <mat-step>
+                    <ng-template matStepLabel>Result</ng-template>
+                    <p>Your problem has to do with <b>{{ chosenOption | uppercase }}</b></p>
+                    <p>The problem is: <b>{{ chosenOption3 | uppercase }}</b></p>
+                    <p>The problem has not been solved yet due to: <b>{{ chosenOption3_1 | uppercase }}</b></p>
+
+                    <p>Is this correct?</p>
+
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="goToSolutions()">Go to solutions</button>
+                    </div>
+                </mat-step>
+
+            </mat-stepper>
+
+
+        </div>
+    </div>
+</div>

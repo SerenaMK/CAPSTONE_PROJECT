@@ -1,0 +1,69 @@
+<p class="display-4 ms-5">User info</p>
+
+<div class="container">
+    <div class="row">
+
+        <!-- USER'S BASIC INFO -->
+        <div class="col-4 bg-body-secondary p-3">
+            <div class="product-image">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="fs-2 fw-bold mb-2">{{ user.username }}</h1>
+
+                    <div class="fs-4" [ngSwitch]="user.roles.length">
+                        <span *ngSwitchCase="1" class="text-primary">User</span>
+                        <span *ngSwitchCase="2" class="text-success fst-italic">Moderator</span>
+                        <span *ngSwitchCase="3" class="text-danger fw-bold">Admin</span>
+                    </div>
+
+                </div>
+
+                <!-- Email -->
+                <span class="fs-6 fst-italic">{{ user.email }}</span>
+
+                <!-- Full name -->
+                <p class="fs-4 mt-3">{{ user.firstname }} {{ user.lastname }}</p>
+            </div>
+        </div>
+
+        <!-- USER ACCOUNT INFO -->
+        <div class="col-8 bg-body-tertiary p-3">
+
+            <!-- CART -->
+            <h3 class="fs-3">
+                {{ user.firstname }}'s Cart - ID {{ user.account.cart.id }} - # of products: {{ user.account.cart.products.length }}
+            </h3>
+
+            <div>
+                <img class="me-1 border" src="{{ user.account.cart.products[i].image }}" width="100px"  *ngFor="let product of products; let i = index" routerLink="/detail/{{ user.account.cart.products[i].id }}">
+            </div>
+
+
+
+            <hr>
+            <!-- FAVORITES -->
+            <h3 class="fs-3">{{ user.firstname }}'s Favorites</h3>
+            <div>
+                <img src="https://mindd.org/wp-content/uploads/2016/05/blogpost-placeholder-100x100.png">
+            </div>
+
+            <hr>
+            <!-- ORDER HISTORY -->
+            <h3 class="fs-3">{{ user.firstname }}'s Order history</h3>
+            <div>
+                <img src="https://mindd.org/wp-content/uploads/2016/05/blogpost-placeholder-100x100.png">
+            </div>
+
+            <button mat-raised-button color="primary" class="mt-4" (click)="test()">
+                <i class="bi bi-cart-plus-fill"></i>
+                Add to cart
+            </button>
+        </div>
+    </div>
+
+    <!-- <div class="row mt-3">
+        <div class="col-12 bg-body-tertiary">
+            <p><b>Product description</b></p>
+            <p>{{ product.description }}</p>
+        </div>
+    </div> -->
+</div>

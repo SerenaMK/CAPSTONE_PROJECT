@@ -1,0 +1,23 @@
+// input.ng-valid {
+//     background-color: lightgreen;
+// }
+
+mat-form-field {
+    width: 100%;
+}
+
+.img-prod {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    #prod-title {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #prod-title {
+        font-size: 2em;
+    }
+}

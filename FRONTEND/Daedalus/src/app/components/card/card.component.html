@@ -1,0 +1,54 @@
+<div class="p-2 h-100">
+    <mat-card class="example-card h-100">
+        <!-- IMAGE -->
+        <div routerLink="/detail/{{ product.id }}" class="card-image mb-4 d-flex justify-content-center">
+            <img class="m-0" mat-card-image src="{{ product.image }}" alt="Product image">
+        </div>
+
+        <div class="d-flex flex-column justify-content-between">
+
+            <mat-card-header>
+                <!-- TITLE -->
+                <mat-card-title>{{ product.title }}</mat-card-title>
+                <mat-card-subtitle>
+                    <p>
+                        {{ product.brand }} -
+                        <span class="fst-italic" [ngStyle]="{'color': product.available==true ? 'green' : 'darkred'}">
+                            <span *ngIf="product.available==true">Available</span>
+                            <span *ngIf="product.available==false">Not available</span>
+                        </span>
+                    </p>
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <div>
+                <!-- PRICE -->
+                <mat-card-content class="mx-3">
+                    <p class="fs-4">{{ product.price | currency: "EUR" }}</p>
+                </mat-card-content>
+
+                <mat-card-actions class="m-0 pb-0">
+                    <div class="d-flex justify-content-end mb-2">
+                        <div class="text-center">
+                            <button mat-raised-button color="primary" (click)="addToCart()" *ngIf="product.available">
+                                <i class="bi bi-cart-plus-fill fs-5"></i>
+                            </button>
+                            <button mat-raised-button color="primary" (click)="addToCart()" *ngIf="!product.available"
+                                disabled>
+                                <i class="bi bi-cart-plus-fill fs-5"></i>
+                            </button>
+                        </div>
+                        <div class="text-center ms-2">
+                            <button mat-raised-button color="accent"
+                                (click)="!product.isFave ? addToFaves() : removeFromFaves()">
+                                <mat-icon *ngIf="!product.isFave">favorite_border</mat-icon>
+                                <mat-icon *ngIf="product.isFave">favorite</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-actions>
+            </div>
+        </div>
+
+    </mat-card>
+</div>

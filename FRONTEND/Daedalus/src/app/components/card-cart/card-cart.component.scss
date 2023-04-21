@@ -1,0 +1,19 @@
+@media screen and (max-width: 576px) {
+    #prod-title {
+        font-size: 0.8em;
+    }
+
+    .buttons > div > button {
+        padding: 0;
+        min-width: 1%;
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .buttons > div > button {
+        padding: 0;
+        min-width: 1%;
+        width: 30px;
+    }
+}

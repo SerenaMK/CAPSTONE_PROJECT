@@ -1,0 +1,13 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <p class="text-center text-md-start display-6 ps-2">Your favorites</p>
+
+            <!-- PRODUCTS LIST -->
+            <div class="fs-5">
+                <app-card-favorite [product]="product" *ngFor="let product of products"></app-card-favorite>
+            </div>
+
+        </div>
+    </div>
+</div>

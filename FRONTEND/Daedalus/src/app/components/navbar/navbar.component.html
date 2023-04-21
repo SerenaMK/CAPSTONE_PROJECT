@@ -1,0 +1,102 @@
+<!-- <mat-drawer-container hasBackdrop="true" fullscreen>
+    <mat-drawer #drawer mode="side" position="end">
+        <p>YOUR CART</p>
+    </mat-drawer>
+</mat-drawer-container> -->
+
+<!-- <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #3f51b5"> -->
+<nav class="navbar navbar-expand-lg" data-bs-theme="light" style="background-color: #FFD333">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">Daedalus</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- SHOP -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/shop">Shop</a>
+                </li>
+                <!-- ABOUT -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+                <!-- DROPDOWN -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" data-bs-theme="light">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li> -->
+                <!-- ADMIN DASHBOARD -->
+                <li class="nav-item" *ngIf="auth">
+                    <a class="nav-link" routerLink="/admin">Admin Dashboard</a>
+                </li>
+                <!-- LOGIN -->
+                <li class="nav-item" *ngIf="!auth">
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+                <!-- REGISTER -->
+                <li class="nav-item" *ngIf="!auth">
+                    <a class="nav-link" routerLink="/register">Register</a>
+                </li>
+                <!-- LOGOUT -->
+                <li class="nav-item" *ngIf="auth">
+                    <a class="nav-link" (click)="onLogout()">Logout</a>
+                </li>
+                <li class="nav-item selection d-flex align-items-center ps-lg-5" *ngIf="auth">
+                    <mat-icon>search</mat-icon>
+                    <a class="nav-link text-reset ps-0" routerLink="/selection">Selection</a>
+                </li>
+            </ul>
+
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- FAVORITES -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="favorites">
+                            <mat-icon>favorite</mat-icon>
+                            <span class="ps-2 label d-block d-lg-none">Your Favorites</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" aria-current="page" (click)="drawer.toggle()">
+                            <i class="bi bi-cart-fill fs-4"></i>
+                        </a>
+                    </li> -->
+                    <!-- CART -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="cart" *ngIf="auth">
+                            <mat-icon>shopping_cart</mat-icon>
+                            <span class="ps-2 label d-block d-lg-none">Your Cart</span>
+                        </a>
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="login" *ngIf="!auth">
+                            <mat-icon>shopping_cart</mat-icon>
+                            <span class="ps-2 label d-block d-lg-none">Cart</span>
+                        </a>
+                    </li>
+                    <!-- USER PROFILE -->
+                    <li class="nav-item pe-3">
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="profile" *ngIf="auth">
+                            <i class="bi bi-person-circle fs-4"></i>
+                            <span class="ps-2 fs-6 user-name">{{ user.firstname }}</span>
+                        </a>
+                        <a class="nav-link" aria-current="page" href="login" *ngIf="!auth">
+                            <i class="bi bi-person-circle fs-4"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

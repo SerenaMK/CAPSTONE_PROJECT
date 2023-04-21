@@ -1,0 +1,77 @@
+<div class="container p-2">
+    <mat-card class="example-card m-0">
+        <div class="row d-flex justify-content-between">
+
+            <!-- PRODUCT INFO -->
+            <div class="col-lg-6 col-12 d-flex">
+                <mat-card-title-group routerLink="/detail/{{ product.id }}">
+                    <!-- ID -->
+                    <div class="mb-2 d-none d-sm-flex d-flex me-3">
+                        <button mat-stroked-button color="primary">
+                            # {{ product.id }}
+                        </button>
+                    </div>
+
+                    <!-- IMAGE -->
+                    <div>
+                        <img class="m-0" mat-card-sm-image src="{{product.image}}" alt="Product image">
+                    </div>
+
+                    <!-- TITLE + BRAND + AVAILABILITY -->
+                    <div class="ms-4 align-self-center">
+                        <mat-card-title id="prod-title">{{ product.title }}</mat-card-title>
+                        <mat-card-subtitle>
+                            {{ product.brand }} -
+                            <span [ngStyle]="{'color': product.available==true ? 'green' : 'darkred'}">
+                                <i *ngIf="product.available==true"> Available</i>
+                                <i *ngIf="product.available==false"> Not available</i>
+                            </span>
+                        </mat-card-subtitle>
+                    </div>
+                </mat-card-title-group>
+            </div>
+
+            <div class="col-lg-6 col-12 d-sm-flex justify-content-end">
+                <!-- BUTTONS -->
+                <div class="d-flex justify-content-center">
+                    <mat-card-actions class="mb-0">
+                        <div class="buttons d-flex text-center">
+                            <!-- ADD ONE -->
+                            <div class="text-center">
+                                <button mat-raised-button color="primary" (click)="addOneToCart()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <!-- QUANTITY (TO DO) -->
+                            <div class="text-center ms-2">
+                                <button mat-raised-button>
+                                    {{ product.quantity }}
+                                </button>
+                            </div>
+                            <!-- REMOVE ONE -->
+                            <div class="text-center ms-2">
+                                <button mat-raised-button color="primary" (click)="removeOneFromCart()">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                            </div>
+                            <!-- REMOVE FROM CART -->
+                            <div class="text-center ms-2">
+                                <button mat-raised-button color="warn" (click)="openDialogRemoveFromCart()">
+                                    <mat-icon>delete_forever</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-actions>
+                </div>
+
+                <!-- PRICE -->
+                <div class="d-flex justify-content-center">
+                    <mat-card-content class="mx-3 mb-0 mt-3">
+                        <p class="fs-3 ms-4">{{ product.price | currency: "EUR" }}</p>
+                    </mat-card-content>
+                </div>
+            </div>
+
+        </div>
+    </mat-card>
+</div>

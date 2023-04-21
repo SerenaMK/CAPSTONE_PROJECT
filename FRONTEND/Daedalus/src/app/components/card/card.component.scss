@@ -1,0 +1,36 @@
+.example-card {
+    max-width: 250px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+// CARD IMAGE
+.card-image {
+    height: 190px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-image img {
+    height: fit-content;
+    min-height: 100%;
+    // width: fit-content;
+    // min-width: fit-content;
+}
+
+// TRUNCATE TITLE WITH ELLIPSIS
+mat-card-title {
+    width: 190px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    // text-overflow: ellipsis;
+}
+
+mat-card-header {
+    height: 80px;
+}

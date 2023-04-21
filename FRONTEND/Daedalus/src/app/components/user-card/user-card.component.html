@@ -1,0 +1,83 @@
+<div class="container p-2">
+    <mat-card class="example-card m-0">
+        <div class="row d-flex justify-content-between">
+
+            <!-- USER INFO -->
+            <div class="col-lg-6 col-12 d-flex">
+                <mat-card-title-group routerLink="/view-user/{{ user.id }}">
+                    <div class="mb-2 d-flex me-3">
+                        <button class="userid" mat-stroked-button color="primary">
+                            # {{ user.id }}
+                        </button>
+                    </div>
+
+                    <!-- IMAGE -->
+                    <div [ngSwitch]="user.roles.length" class="d-none d-sm-block">
+                        <img *ngSwitchCase="1" class="m-0" mat-card-sm-image src="https://i.ibb.co/JcJrsMt/user-100.png"
+                            alt="User image">
+                        <img *ngSwitchCase="2" class="m-0" mat-card-sm-image src="https://i.ibb.co/Fg8PVP0/mod-100.png"
+                            alt="Moderator image">
+                        <img *ngSwitchCase="3" class="m-0" mat-card-sm-image
+                            src="https://i.ibb.co/BwYpx1v/admin-100.png" alt="Admin image">
+                    </div>
+
+                    <div class="ms-sm-4 d-flex align-items-center">
+
+                        <div>
+                            <!-- USERNAME -->
+                            <mat-card-title>{{ user.username }}</mat-card-title>
+
+                            <!-- TYPE -->
+                            <mat-card-subtitle [ngSwitch]="user.roles.length">
+                                <p *ngSwitchCase="1" class="text-primary">User</p>
+                                <p *ngSwitchCase="2" class="text-success fst-italic">Moderator</p>
+                                <p *ngSwitchCase="3" class="text-danger fw-bold">Admin</p>
+                            </mat-card-subtitle>
+                        </div>
+                    </div>
+                </mat-card-title-group>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="col-lg-6 col-12 d-flex justify-content-center justify-content-sm-end">
+                <mat-card-actions class="px-2">
+                    <div class="buttons d-flex mb-2" [ngSwitch]="user.roles.length">
+                        <!-- EDIT -->
+                        <div>
+                            <button mat-raised-button matTooltip="Edit" color="primary" class="m-0">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <!-- PROMOTE TO MODERATOR -->
+                        <div class="ms-2" *ngSwitchCase="1">
+                            <button mat-raised-button matTooltip="Make Mod" color="success" class="m-0" (click)="onClickUpdateToMod()">
+                                <!-- <mat-icon>person_add</mat-icon> -->
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                        <!-- PROMOTE TO ADMIN -->
+                        <div class="ms-2" *ngSwitchCase="2">
+                            <button mat-raised-button matTooltip="Make Admin" color="warn" class="m-0" (click)="onClickUpdateToAdmin()">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                        <!-- DEMOTE TO MODERATOR -->
+                        <div class="ms-2" *ngSwitchCase="3">
+                            <button mat-raised-button matTooltip="Make Mod" color="success" class="m-0" (click)="onClickUpdateToMod()">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+                        <!-- DEMOTE TO USER -->
+                        <div class="ms-2" *ngSwitchCase="2">
+                            <button mat-raised-button matTooltip="Make User" color="blue" class="m-0 text-light" (click)="onClickUpdateToUser()">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+
+                    </div>
+                </mat-card-actions>
+            </div>
+
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,28 @@
+.mat-success {
+    background-color: green;
+    color: #fff;
+}
+
+.mat-blue {
+    background-color: #0D6EFD;
+}
+
+mat-card-title-group {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 370px) {
+    .userid {
+        padding: 0;
+        min-width: 1%;
+        width: 50px;
+    }
+
+    .buttons > div > button {
+        padding: 0;
+        min-width: 1%;
+        width: 50px;
+    }
+
+
+}

@@ -1,0 +1,28 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <p class="text-center text-md-start display-6 ps-2">Your cart</p>
+
+            <!-- PRODUCTS LIST -->
+            <div class="fs-5">
+                <app-card-cart [product]="product" *ngFor="let product of products"></app-card-cart>
+            </div>
+
+            <!-- BOTTOM CONTAINER -->
+            <div class="py-4 d-flex flex-column align-items-end">
+                <!-- TOTAL -->
+                <div class="ms-4 w-25 d-flex justify-content-around me-5 me-sm-0">
+                    <div class="fs-4">Total: </div>
+                    <div class="fs-2">{{ total | currency: "EUR" }}</div>
+                </div>
+
+                <!-- CHECKOUT -->
+                <div class="mt-4 p-2 my-4">
+                    <button class="px-4 py-2 fs-4" mat-raised-button color="warning" (click)="proceedToCheckout()">
+                        Proceed to checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

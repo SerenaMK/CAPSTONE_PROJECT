@@ -1,0 +1,20 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <p class="display-6 ps-2">Solutions</p>
+
+            <div class="border bg-body-tertiary p-4 fs-5 text-center">
+                <p *ngIf="products.length > 0">Our suggestions based on the issues you have selected</p>
+                <div *ngIf="products.length == 0">
+                    <p>Your selection has been reset.</p>
+                    <button mat-raised-button color="accent" routerLink="/selection">Go back</button>
+                </div>
+            </div>
+
+            <!-- PRODUCTS LIST -->
+            <div class="d-flex flex-wrap my-3">
+                <app-card [product]="product" *ngFor="let product of products"></app-card>
+            </div>
+        </div>
+    </div>
+</div>

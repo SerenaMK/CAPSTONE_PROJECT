@@ -1,0 +1,87 @@
+<div class="container mt-3">
+    <div class="row p-4">
+
+        <!-- USER'S BASIC INFO -->
+        <div class="col-md-4 box-left p-3">
+            <div class="product-image">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="fs-2 fw-bold mb-2">{{ user.username }}</h1>
+
+                    <div class="fs-4" [ngSwitch]="user.roles.length">
+                        <span *ngSwitchCase="1" class="text-primary">User</span>
+                        <span *ngSwitchCase="2" class="text-success fst-italic d-none d-sm-block d-md-none d-lg-block">Moderator</span>
+                        <span *ngSwitchCase="2" class="text-success fst-italic d-block d-sm-none d-md-block d-lg-none">Mod</span>
+                        <span *ngSwitchCase="3" class="text-danger fw-bold">Admin</span>
+                    </div>
+
+                </div>
+
+                <!-- Email -->
+                <span class="fs-6 fst-italic text-muted">{{ user.email }}</span>
+
+                <!-- Full name -->
+                <p class="fs-5 mt-4">Hello, <i class="fw-bold">{{ user.firstname }} {{ user.lastname }}</i></p>
+            </div>
+
+            <hr>
+
+            <div class="p-4 fs-6">
+                <ul class="list-unstyled manage-list">
+                    <li>Your information</li>
+                    <li>Your addresses</li>
+                    <li>Your payment options</li>
+                    <li><a class="text-decoration-none" routerLink="/settings">Settings</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- USER ACCOUNT INFO -->
+        <div class="col-md-8 box-right p-3 ps-md-5">
+
+            <!-- CART -->
+            <div>
+                <h3 class="fs-3">
+                    Your Cart - Total: {{ total | currency: "EUR"
+                    }}
+                </h3>
+                <img class="me-1 border" src="{{ cartProducts[i].image }}" width="100px"
+                    *ngFor="let cartProduct of cartProducts | slice:0:10; let i = index"
+                    routerLink="/detail/{{ cartProducts[i].id }}">
+
+                <div class="d-flex justify-content-end fs-6 pt-3">
+                    <a routerLink="/cart" class="view-all">View all</a>
+                </div>
+            </div>
+            <hr>
+
+            <!-- FAVORITES -->
+            <div>
+                <h3 class="fs-3">Your Favorites</h3>
+                <img class="me-1 border" src="{{ favesProducts[i].image }}" width="100px"
+                    *ngFor="let favesProduct of favesProducts | slice:0:10; let i = index"
+                    routerLink="/detail/{{ favesProducts[i].id }}">
+
+                <div class="d-flex justify-content-end fs-6 pt-3">
+                    <a routerLink="/favorites" class="view-all">View all</a>
+                </div>
+            </div>
+            <hr>
+
+            <!-- ORDER HISTORY -->
+            <div>
+                <h3 class="fs-3">Your Order History</h3>
+
+                <div class="fs-5">
+                    <app-card-order [order]="order" *ngFor="let order of orders | slice:0:2; let i = index">
+                    </app-card-order>
+                </div>
+
+                <div class="d-flex justify-content-end fs-6 pt-3">
+                    <a routerLink="/order-history" class="view-all">View all</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row mt-2 mx-3">
+
+        <div class="col-12">
+            <p class="text-center text-md-start display-6">Edit product # {{ identifier }}</p>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="p-0 p-sm-4">
+                <!-- FORM -->
+                <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                    <div class="d-flex flex-column align-items-start mb-4">
+                        <!-- Title -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input matInput type="text" name="title" formControlName="title">
+                        </mat-form-field>
+
+                        <!-- Type -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Type</mat-label>
+                            <input matInput type="text" name="type" formControlName="type">
+                        </mat-form-field>
+
+                        <!-- Brand -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Brand</mat-label>
+                            <input matInput type="text" name="brand" formControlName="brand">
+                        </mat-form-field>
+
+                        <!-- Image -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Image</mat-label>
+                            <input matInput type="text" name="image" formControlName="image">
+                        </mat-form-field>
+
+                        <!-- Price -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Price</mat-label>
+                            <input matInput type="number" name="price" formControlName="price">
+                        </mat-form-field>
+
+                        <!-- Description -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput name="description" formControlName="description"></textarea>
+                        </mat-form-field>
+
+                        <!-- Is Available -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Available</mat-label>
+                            <mat-select name="available" formControlName="available">
+                                <mat-option value="true">True</mat-option>
+                                <mat-option value="false">False</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <!-- Submit -->
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="!editForm.valid">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- PREVIEW BOX -->
+        <div class="col-12 col-md-6 mb-5">
+            <div class="border border-2 p-4">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="product-image">
+                                <img class="img-prod p-3 bg-body-secondary" src="{{ editForm.value.image }}">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 bg-body-tertiary p-3">
+                            <h1 id="prod-title" class="fw-bold">{{ editForm.value.title }} </h1>
+                            <p class="fs-3">{{ editForm.value.price | currency: "EUR" }}</p>
+
+                            <p class="fs-6 mt-4">{{ editForm.value.type }} - <i>{{ editForm.value.brand }}</i></p>
+
+                            <p [ngStyle]="{'color': editForm.value.available=='true' ? 'green' : 'darkred'}">
+                                <span *ngIf="editForm.value.available=='true'">Available</span>
+                                <span *ngIf="editForm.value.available=='false'">Not available</span>
+                            </p>
+
+                            <button mat-raised-button color="primary" class="mt-4" disabled>
+                                <i class="bi bi-cart-plus-fill"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 bg-body-tertiary">
+                            <p><b>Product description</b></p>
+                            <p>{{ editForm.value.description }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

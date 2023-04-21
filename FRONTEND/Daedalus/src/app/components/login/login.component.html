@@ -1,0 +1,34 @@
+<div class="container bg-body-tertiary border mt-3">
+    <div class="row mt-2">
+        <div class="col-12 ms-5">
+            <p class="display-5">Login</p>
+
+            <div class="d-flex justify-content-around p-4">
+
+
+                <!-- FORM -->
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="d-flex flex-column align-items-start mb-4">
+                        <!-- Username -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput type="text" name="username" formControlName="username">
+                        </mat-form-field>
+
+                        <!-- Password -->
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" name="password" formControlName="password">
+                        </mat-form-field>
+
+                        <!-- Submit -->
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="!loginForm.valid">Add</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
